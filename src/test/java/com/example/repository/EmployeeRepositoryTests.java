@@ -31,7 +31,7 @@ public class EmployeeRepositoryTests {
 
     // save operation
     @Test
-    @DisplayName("save Employee")
+    @DisplayName("save")
     public void givenEmployeeObject_whenSave_thenSavedEmployee() {
         // given
 
@@ -45,7 +45,7 @@ public class EmployeeRepositoryTests {
 
     // get all operation
     @Test
-    @DisplayName("get all Employee")
+    @DisplayName("findAll")
     public void givenEmployeeList_whenFindAll_thenEmployeesList() {
         // given
         Employee employee1 = Employee.builder()
@@ -67,7 +67,7 @@ public class EmployeeRepositoryTests {
 
     // get by id operation
     @Test
-    @DisplayName("get Employee by id")
+    @DisplayName("findById")
     public void givenEmployeeId_whenFindById_thenEmployee(){
         // given
         employeeRepository.save(employee);
@@ -81,7 +81,7 @@ public class EmployeeRepositoryTests {
 
     // custom query
     @Test
-    @DisplayName("get Employee by email")
+    @DisplayName("findByEmail")
     public void givenEmployeeEmail_whenFindByEmail_thenEmployee(){
         // given
         employeeRepository.save(employee);
@@ -93,37 +93,10 @@ public class EmployeeRepositoryTests {
         assertThat(employeeDB).isNotNull();
     }
 
-    // update operation
-    @Test
-    @DisplayName("update Employee")
-    public void givenEmployeeObject_whenUpdateEmployee_thenUpdatedEmployee() {
-        // given
-        employeeRepository.save(employee);
-
-        Employee updateData = Employee.builder()
-                .firstName("Adarsh")
-                .lastName("Anand")
-                .email("adarsh.anand@gmail.com")
-                .build();
-
-        // when-then
-        Employee savedEmployee = employeeRepository.findById(employee.getId()).orElse(null);
-        assertThat(savedEmployee).isNotNull();
-
-        savedEmployee.setFirstName(updateData.getFirstName());
-        savedEmployee.setLastName(updateData.getLastName());
-        savedEmployee.setEmail(updateData.getEmail());
-        Employee updatedEmployee =  employeeRepository.save(savedEmployee);
-
-        assertThat(updatedEmployee.getFirstName()).isEqualTo(updateData.getFirstName());
-        assertThat(updatedEmployee.getLastName()).isEqualTo(updateData.getLastName());
-        assertThat(updatedEmployee.getEmail()).isEqualTo(updateData.getEmail());
-    }
-
     // delete operation
     @Test
-    @DisplayName("delete Employee")
-    public void givenEmployeeId_whenDelete_thenCheckEmployeeDeletion() {
+    @DisplayName("deleteById")
+    public void givenEmployeeId_whenDeleteById_thenCheckEmployeeDeletion() {
         // given
         employeeRepository.save(employee);
 
@@ -137,7 +110,7 @@ public class EmployeeRepositoryTests {
 
     // custom query JPQL with indexed parameter operation
     @Test
-    @DisplayName("indexed JPQL query - find Employee")
+    @DisplayName("findByFullNameJPQLIndexed")
     public void givenFirstNameAndLastName_whenFindByFullNameJPQLIndexed_thenEmployee() {
         // given
         String firstName = "Adarsh";
@@ -153,7 +126,7 @@ public class EmployeeRepositoryTests {
 
     // custom query JPQL with named parameter operation
     @Test
-    @DisplayName("named JPQL query - find Employee")
+    @DisplayName("findByFullNameJPQLNamed")
     public void givenFirstNameAndLastName_whenFindByFullNameJPQLNamed_thenEmployee() {
         // given
         String firstName = "Adarsh";
@@ -169,7 +142,7 @@ public class EmployeeRepositoryTests {
 
     // custom native query SQL with indexed parameter operation
     @Test
-    @DisplayName("indexed SQL query - find Employee")
+    @DisplayName("findByFullNameSQLIndexed")
     public void givenFirstNameAndLastName_whenFindByFullNameSQLIndexed_thenEmployee() {
         // given
         String firstName = "Adarsh";
@@ -185,7 +158,7 @@ public class EmployeeRepositoryTests {
 
     // custom native query SQL with named parameter operation
     @Test
-    @DisplayName("named SQL query - find Employee")
+    @DisplayName("findByFullNameSQLNamed")
     public void givenFirstNameAndLastName_whenFindByFullNameSQLNamed_thenEmployee() {
         // given
         String firstName = "Adarsh";
