@@ -26,6 +26,7 @@
 ###### Mockito
 
 1. Mockito basics
+   - enables mock creation, verification and stubbing
    - `Mockito.mock()` -> To create a mock object of a given class or interface
    - `@Mock` 
      - To mock an object 
@@ -44,4 +45,15 @@
 1. Unit test for service methods
 2. Unit test for service methods for Exception
 
+###### 03. add controller methods and its tests
 
+1. `@WebMvcTest`
+   - Spring Boot instantiates only the web layer rather than the whole application context
+   - It will load only the specified controller and its dependencies only without loading the entire application
+   - If application with multiple controllers, use `@WebMvcTest(HomeController.class)`
+2. `@MockBean`
+   - To inject a mocked instance into application context so that it's available in controller
+3. `MockMvc` -> To call REST APIs
+4. JSON Path Library
+   - Java DSL for reading JSON documents
+   - `$` -> root member of a JSON object or array

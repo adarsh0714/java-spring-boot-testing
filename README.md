@@ -11,8 +11,17 @@ Java Spring Boot Testing
 
 ###### 01. add entity, repository and its tests
 - add `Employee` entity
-  - add `EmployeeRepository`
+- add `EmployeeRepository`
 - add `EmployeeRepositoryTests`
+
+###### 02. add service methods and its tests, exception
+- add exception
+- add `EmployeeService`
+- add `EmployeeServiceTests`
+
+###### 03. add controller methods and its tests
+- add `EmployeeController`
+- add `EmployeeControllerTests`
 
 ### Run locally
 - On the host, from IDE:
